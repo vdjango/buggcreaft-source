@@ -1,0 +1,28 @@
+[Unit]
+Description=Bugg source download edge (single cache owner)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=bugg-source
+Group=bugg-source
+WorkingDirectory=/opt/bugg-source/current
+EnvironmentFile=/etc/bugg-source/edge.env
+ExecStart=/opt/bugg-source/current/.venv/bin/mc-mirror
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=35
+LimitNOFILE=8192
+TasksMax=128
+MemoryMax=1200M
+CPUQuota=150%
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+# Mounted data directories follow normal Unix ownership/permissions. System
+# directories remain read-only; the unprivileged service never mounts disks.
+ReadWritePaths=/var/lib/bugg-source
+
+[Install]
+WantedBy=multi-user.target

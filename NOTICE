@@ -1,0 +1,12 @@
+Bugg Source includes the Minecraft Translation Platform implementation
+from E:/code/minecraft-translation-platform (working tree, 2026-11-09).
+Upstream project: https://github.com/vdjango/minecraft-resource-translations
+License: GNU AGPL-3.0-or-later; see LICENSE.
+
+Original modules, Vue components, tests and documentation retain their
+attribution. A file-level import manifest (original SHA-256) is maintained
+at reference/platform/migration-manifest.json. Modified implementations
+are documented in 文档/30-源站完整迁移与重设计.md.
+
+Third-party browser libraries retain their bundled license notices under
+src/mc_translate/web/. Production data and credentials were not imported.

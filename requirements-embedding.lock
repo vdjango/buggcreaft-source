@@ -1,0 +1,19 @@
+# Optional CPU inference process; API and workers only need requirements.lock.
+-r requirements.lock
+fastembed==0.7.4
+filelock==4.2.9
+flatbuffers==25.12.19
+fsspec==2026.9.0
+hf-xet==1.8.0
+huggingface_hub==1.33.0
+loguru==0.7.3
+mmh3==5.3.1
+numpy==2.4.6
+onnxruntime==1.31.1
+pillow==11.3.0
+protobuf==7.36.2
+py_rust_stemmers==0.1.8
+PyYAML==6.0.3
+tokenizers==0.23.3
+tqdm==4.70.1
+win32_setctime==1.2.1; sys_platform == 'win32'

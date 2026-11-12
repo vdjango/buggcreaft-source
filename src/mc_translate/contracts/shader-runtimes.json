@@ -1,0 +1,8 @@
+{
+  "schema": "bugg-shader-support-v1",
+  "compatibilityRules": [],
+  "runtimes": [
+    {"id": "iris", "name": "Iris Shaders", "publisher": "Modrinth", "projectId": "YL57xq9U", "curseforgeProjectId": "455508", "loaders": ["fabric", "neoforge", "quilt"], "markers": ["net/irisshaders/iris/Iris.class", "net/coderbot/iris/Iris.class"]},
+    {"id": "oculus", "name": "Oculus", "publisher": "Modrinth", "projectId": "GchcoXML", "curseforgeProjectId": "581495", "loaders": ["forge", "neoforge"], "markers": ["net/coderbot/iris/Iris.class", "net/irisshaders/iris/Iris.class"]}
+  ]
+}

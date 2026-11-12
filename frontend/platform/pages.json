@@ -1,0 +1,40 @@
+{
+  "setup": [],
+  "search": [],
+  "admin-workbench": [],
+  "admin-clients": [],
+  "admin-feedback": [
+    "admin.js"
+  ],
+  "admin-mail": [
+    "admin.js",
+    "admin-mail.js"
+  ],
+  "admin-model": [
+    "admin.js"
+  ],
+  "admin-nodes": [],
+  "admin-tasks": [
+    "admin-records.js",
+    "admin.js"
+  ],
+  "admin-traffic": [],
+  "admin-usage": [],
+  "admin": [],
+  "developers": [
+    "network-client.js",
+    "network.js"
+  ],
+  "docs": [
+    "docs.js"
+  ],
+  "index": [
+    "network-client.js",
+    "app.js"
+  ],
+  "mirror": [],
+  "project": [
+    "project.js"
+  ],
+  "admin-mirror": []
+}

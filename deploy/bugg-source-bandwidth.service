@@ -1,0 +1,14 @@
+[Unit]
+Description=Bugg shared bandwidth scheduling
+Wants=network-online.target
+After=network-online.target
+Before=bugg-mirror-edge.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/bugg-source/bandwidth.env
+ExecStart=/usr/local/sbin/bugg-source-bandwidth
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

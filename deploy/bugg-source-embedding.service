@@ -1,0 +1,26 @@
+[Unit]
+Description=Bugg Source private CPU semantic inference
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=buggtranslate
+Group=buggtranslate
+WorkingDirectory=/opt/bugg-source/current
+EnvironmentFile=/etc/bugg-source.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/bugg-source/current/.venv/bin/bugg-source embedding-serve
+Restart=on-failure
+RestartSec=5
+MemoryMax=768M
+CPUQuota=100%
+TasksMax=64
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/bugg-source
+
+[Install]
+WantedBy=multi-user.target

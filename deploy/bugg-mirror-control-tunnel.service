@@ -1,0 +1,18 @@
+[Unit]
+Description=Bugg private mirror control tunnel (Shanghai to Chengdu)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=buggtranslate
+ExecStart=/usr/bin/ssh -NT -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/var/lib/buggcraft-translation/control-ssh/known_hosts -i /var/lib/buggcraft-translation/control-ssh/id_ed25519 -L 127.0.0.1:18460:127.0.0.1:18450 bugg-control@1.14.48.161
+Restart=always
+RestartSec=3
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

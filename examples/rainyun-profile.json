@@ -1,0 +1,16 @@
+{
+  "qiniu_profiles": [
+    {
+      "id": "rainyun-source",
+      "provider": "rainyun",
+      "endpoint": "https://cn-nb1.rains3.com",
+      "region": "cn-nb1",
+      "bucket": "replace-me",
+      "prefix": "source",
+      "addressing_style": "path",
+      "quota_gib": 80,
+      "quota_unit": "GiB",
+      "daily_upload_gib": 1
+    }
+  ]
+}

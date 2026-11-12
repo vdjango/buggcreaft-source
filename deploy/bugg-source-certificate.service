@@ -1,0 +1,7 @@
+[Unit]
+Description=Renew Chengdu source HTTPS certificate
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/bugg-source/current/.venv/bin/certbot renew --quiet

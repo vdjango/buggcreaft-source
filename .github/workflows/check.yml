@@ -1,0 +1,53 @@
+name: checks
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg18-trixie
+        env:
+          POSTGRES_PASSWORD: integration-only
+          POSTGRES_DB: bugg_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres -d bugg_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      BUGG_TEST_POSTGRES_URL: postgresql+psycopg://postgres:integration-only@127.0.0.1:5432/bugg_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e . --no-deps
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci && npm run build
+        working-directory: frontend
+      - run: ruff check .
+      - run: ruff check src/mc_translate/search_export.py src/mc_translate/search_gateway.py src/mc_translate/catalog_gateway.py tests/platform/test_catalog_gateway.py
+      - run: ruff format --check .
+      - run: ruff format --check src/mc_translate/search_export.py src/mc_translate/search_gateway.py src/mc_translate/catalog_gateway.py tests/platform/test_catalog_gateway.py
+      - run: python tools/update_method_index.py --check
+      - run: pytest -q
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run methods:check
+      - run: npm run build
