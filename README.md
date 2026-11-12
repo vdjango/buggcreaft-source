@@ -18,6 +18,8 @@
 
 ---
 
+![Bugg 源站界面](docs/images/source-preview.png)
+
 Bugg 源站是面向 Minecraft Java 版玩家与社区的资源服务。它将 Modrinth、CurseForge 的资源检索、项目介绍译文和文件分发放在一起，也为启动器提供统一的接入地址。
 
 想找模组、挑光影，或看懂一个整合包的玩法？直接打开网页即可开始，无需先部署服务。
